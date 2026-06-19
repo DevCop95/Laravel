@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Support\PhoneValidator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePetRequest extends FormRequest
@@ -28,5 +29,20 @@ class UpdatePetRequest extends FormRequest
             'owner_phone' => ['nullable', 'string', 'max:30'],
             'owner_address' => ['nullable', 'string', 'max:255'],
         ];
+    }
+
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            $phone = $this->input('owner_phone');
+            $countryCode = $this->input('owner_phone_country_code');
+
+            if ($phone && $countryCode) {
+                $error = PhoneValidator::validate($phone, $countryCode);
+                if ($error) {
+                    $validator->errors()->add('owner_phone', $error);
+                }
+            }
+        });
     }
 }
