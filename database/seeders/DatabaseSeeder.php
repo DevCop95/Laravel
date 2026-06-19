@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
     protected function seedAdmin(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@greencol.com'],
+            ['email' => 'admin@vet.com'],
             [
                 'name' => 'Administrador',
                 'password' => 'password',
