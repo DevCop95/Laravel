@@ -1,5 +1,3 @@
-<p align="center"><a href="https://github.com/DevCop95/Laravel" target="_blank"><img src="public/screenshot-cover.png" width="100%" alt="Green Col Dashboard"></a></p>
-
 <h1 align="center">Green Col</h1>
 
 <p align="center">Sistema de gestion veterinaria para operacion clinica diaria.</p>
