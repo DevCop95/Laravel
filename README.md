@@ -1,20 +1,31 @@
-# Green Col
+<p align="center"><a href="https://github.com/DevCop95/Laravel" target="_blank"><img src="public/screenshot-cover.png" width="100%" alt="Green Col Dashboard"></a></p>
 
-Sistema de gestion veterinaria para operacion clinica diaria. Administra citas, pacientes, responsables, servicios y equipo clinico con seguimiento publico por WhatsApp.
+<h1 align="center">Green Col</h1>
 
-## Tags
+<p align="center">Sistema de gestion veterinaria para operacion clinica diaria.</p>
 
-`laravel` `vue3` `inertiajs` `tailwindcss` `sqlite` `veterinaria` `whatsapp` `cruds` `dashboard` `php8.3`
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/Vue-3-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="Vue">
+  <img src="https://img.shields.io/badge/Inertia.js-1.0-7B2BF9?style=for-the-badge" alt="Inertia">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+  <img src="https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+</p>
 
-## Tecnologias
+<p align="center">
+  <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
+  <img src="https://img.shields.io/badge/Veterinaria-4CAF50?style=for-the-badge" alt="Veterinaria">
+  <img src="https://img.shields.io/badge/Dashboard-10B981?style=for-the-badge" alt="Dashboard">
+  <img src="https://img.shields.io/badge/CRUDs-F59E0B?style=for-the-badge" alt="CRUDs">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+</p>
 
-| Capa | Tecnologia |
-|------|-----------|
-| Backend | Laravel 13 / PHP 8.3 |
-| Frontend | Vue 3 + Inertia.js |
-| Estilos | Tailwind CSS |
-| Base de datos | SQLite |
-| Utilidades | Python (vetproject.py) |
+---
+
+Administra citas, pacientes, responsables, servicios y equipo clinico con seguimiento publico por WhatsApp.
+
+<p align="center"><img src="public/screenshot-dashboard.png" width="100%" alt="Green Col Dashboard Completo"></p>
 
 ## Caracteristicas
 
@@ -44,8 +55,8 @@ Sistema de gestion veterinaria para operacion clinica diaria. Administra citas, 
 
 ```bash
 # Clonar el repositorio
-git clone <url-del-repositorio>
-cd green-col
+git clone https://github.com/DevCop95/Laravel.git
+cd Laravel
 
 # Instalacion inicial
 composer run setup
@@ -55,6 +66,7 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
+php artisan db:seed
 php artisan storage:link
 npm install && npm run build
 ```
@@ -64,8 +76,8 @@ npm install && npm run build
 | Campo | Valor |
 |-------|-------|
 | URL | http://127.0.0.1:8000/login |
-| Email | admin@vet.com |
-| Password | password |
+| Email | `admin@vet.com` |
+| Password | `password` |
 
 ## Desarrollo
 
@@ -100,13 +112,6 @@ green-col/
 │   │   ├── ServiceController.php       # CRUD de servicios
 │   │   ├── InventoryController.php     # CRUD de inventario
 │   │   └── SettingsController.php      # Configuracion de clinica
-│   ├── Http/Requests/
-│   │   ├── StorePetRequest.php
-│   │   ├── UpdatePetRequest.php
-│   │   ├── StoreAppointmentRequest.php
-│   │   ├── UpdateAppointmentRequest.php
-│   │   ├── StoreOwnerRequest.php
-│   │   └── UpdateOwnerRequest.php
 │   ├── Models/
 │   │   ├── Appointment.php
 │   │   ├── Pet.php
@@ -120,8 +125,7 @@ green-col/
 │   │   ├── AppointmentService.php
 │   │   ├── PetService.php
 │   │   └── VeterinarianService.php
-│   └── Traits/
-│       └── Auditable.php
+│   └── Policies/
 ├── database/migrations/
 ├── resources/js/
 │   ├── Pages/
@@ -134,23 +138,10 @@ green-col/
 │   │   ├── Services/Index.vue
 │   │   ├── Inventory/Index.vue
 │   │   ├── Audit/Index.vue
-│   │   ├── Settings/Edit.vue
 │   │   └── Public/Tracking.vue
 │   ├── Components/
-│   │   ├── DataTable.vue
-│   │   ├── Modal.vue
-│   │   ├── StatusBadge.vue
-│   │   ├── ChartCard.vue
-│   │   └── AuditInfo.vue
-│   ├── Layouts/
-│   │   ├── AuthenticatedLayout.vue
-│   │   └── GuestLayout.vue
 │   └── composables/
-│       ├── useFormatting.js
-│       └── useToast.js
 ├── routes/web.php
-├── vetproject.py
-├── context.md
 └── README.md
 ```
 
@@ -170,30 +161,14 @@ green-col/
 |--------|------|-------------|
 | GET | `/dashboard` | Panel principal con estadisticas |
 | GET | `/citas` | Lista de citas con filtros |
-| POST | `/appointments` | Crear cita |
-| PATCH | `/appointments/{id}` | Editar cita |
-| DELETE | `/appointments/{id}` | Eliminar cita |
 | GET | `/citas/exportar` | Exportar citas a CSV |
 | GET | `/pacientes` | Lista de pacientes |
-| POST | `/pets` | Crear paciente |
-| PATCH | `/pets/{id}` | Editar paciente |
-| DELETE | `/pets/{id}` | Eliminar paciente |
 | GET | `/pacientes/{id}/historial` | Historial clinico del paciente |
 | GET | `/responsables` | Lista de responsables |
-| POST | `/owners` | Crear responsable |
-| PATCH | `/owners/{id}` | Editar responsable |
-| DELETE | `/owners/{id}` | Eliminar responsable |
 | GET | `/veterinarios` | Lista de veterinarios |
-| POST | `/veterinarians` | Crear veterinario |
-| PATCH | `/veterinarians/{id}` | Editar veterinario |
-| DELETE | `/veterinarians/{id}` | Eliminar veterinario |
 | GET | `/servicios` | Lista de servicios |
-| POST | `/services` | Crear servicio |
-| PATCH | `/services/{id}` | Editar servicio |
-| DELETE | `/services/{id}` | Eliminar servicio |
 | GET | `/inventario` | Inventario de insumos |
 | GET | `/auditoria` | Historial de cambios (admin) |
-| GET | `/settings` | Configuracion de clinica |
 
 ## Base de datos
 
@@ -206,17 +181,8 @@ green-col/
 - **services** — Catalogo de servicios (nombre, tipo, costo, descripcion)
 - **inventory_items** — Insumos (nombre, categoria, SKU, cantidad, precio unitario)
 - **clinic_settings** — Configuracion (nombre, logo, paleta de colores)
-- **audit_logs** — Registro de cambios (usuario, modelo, accion, descripción, cambios)
+- **audit_logs** — Registro de cambios (usuario, modelo, accion, descripcion, cambios)
 - **users** — Usuarios del sistema con roles (admin, veterinarian)
-
-### Campos importantes
-
-- `appointments.public_token` — Token unico para enlace de seguimiento
-- `appointments.expires_at` — Fecha de expiracion del enlace (7 dias)
-- `appointments.doctor_notes` — Notas del doctor
-- `appointments.service_finished_at` — Fecha de finalizacion del servicio
-- `pets.photo_path` — Foto del paciente
-- `owners.phone_country_code` — Prefijo de pais para WhatsApp
 
 ## Funcionalidades clave
 
