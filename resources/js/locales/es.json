@@ -1,0 +1,150 @@
+{
+    "app": {
+        "name": "Green Col",
+        "tagline": "Veterinaria"
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "appointments": "Citas",
+        "pets": "Pacientes",
+        "veterinarians": "Equipo clinico",
+        "services": "Servicios",
+        "inventory": "Inventario",
+        "settings": "Configuracion",
+        "profile": "Perfil",
+        "logout": "Cerrar sesion"
+    },
+    "dashboard": {
+        "title": "Vista general",
+        "subtitle": "Resumen operativo, analytics y edicion detallada en ventanas modales.",
+        "activeCases": "Casos activos",
+        "activeCasesDesc": "Pacientes en seguimiento o programados.",
+        "todayAgenda": "Agenda de hoy",
+        "todayAgendaDesc": "Citas con fecha de hoy.",
+        "completed": "Finalizadas",
+        "completedDesc": "Servicios cerrados y listos para compartir.",
+        "revenue": "Monto en curso",
+        "revenueDesc": "Valor acumulado en agenda activa.",
+        "capacity": "Capacidad configurada",
+        "upcoming": "Proximas citas",
+        "quickSummary": "Resumen rapido"
+    },
+    "appointments": {
+        "title": "Citas",
+        "subtitle": "Programadas, en progreso, finalizadas y canceladas",
+        "create": "Registrar cita",
+        "edit": "Editar cita",
+        "new": "Nueva cita",
+        "registerService": "Registrar servicio",
+        "status": "Estado",
+        "allStatuses": "Todos los estados",
+        "patient": "Paciente",
+        "veterinarian": "Veterinario",
+        "service": "Servicio",
+        "date": "Fecha",
+        "cost": "Costo",
+        "actions": "Acciones",
+        "editBtn": "Editar",
+        "completeBtn": "Finalizar",
+        "searchPlaceholder": "Buscar por mascota, responsable, veterinario o servicio",
+        "emptyMessage": "No hay citas que coincidan con ese filtro."
+    },
+    "pets": {
+        "title": "Pacientes",
+        "subtitle": "Mascotas y responsables",
+        "create": "Crear paciente",
+        "newRecord": "Nuevo registro",
+        "baseClinic": "Base clinica",
+        "registered": "Pacientes registrados",
+        "owners": "Responsables",
+        "directory": "Directorio de contacto",
+        "searchPlaceholder": "Filtrar por mascota, responsable o veterinario",
+        "emptyMessage": "No hay pacientes registrados."
+    },
+    "veterinarians": {
+        "title": "Equipo clinico",
+        "subtitle": "Veterinarios y veterinarias",
+        "create": "Crear veterinario",
+        "newProfessional": "Nuevo profesional",
+        "activeTeam": "Personal activo",
+        "available": "Equipo disponible para agenda",
+        "searchPlaceholder": "Filtrar por nombre, especialidad o correo",
+        "emptyMessage": "No hay veterinarios registrados."
+    },
+    "services": {
+        "title": "Servicios",
+        "subtitle": "Catalogo clinico y costos",
+        "create": "Crear servicio",
+        "newService": "Nuevo servicio",
+        "addToCatalog": "Agregar al catalogo",
+        "activeCatalog": "Catalogo activo",
+        "configured": "Servicios configurados",
+        "searchPlaceholder": "Filtrar por nombre, tipo o descripcion",
+        "emptyMessage": "No hay servicios configurados."
+    },
+    "inventory": {
+        "title": "Inventario",
+        "subtitle": "Control de suministros clinicos",
+        "addItem": "Agregar al inventario",
+        "newItem": "Nuevo articulo",
+        "active": "Inventario activo",
+        "registered": "Articulos registrados",
+        "searchPlaceholder": "Filtrar por nombre, categoria o proveedor",
+        "emptyMessage": "No hay articulos en el inventario."
+    },
+    "settings": {
+        "title": "Configuracion de la veterinaria",
+        "clinicName": "Nombre de la veterinaria",
+        "logo": "Logo de la clinica",
+        "palette": "Paleta de colores",
+        "paletteDesc": "Selecciona una paleta lista para aplicar automaticamente en accesos, barra principal y botones.",
+        "save": "Guardar Cambios",
+        "saved": "Guardado."
+    },
+    "tracking": {
+        "title": "Seguimiento temporal del caso",
+        "description": "Este enlace muestra solo la evolucion del servicio actual y se actualiza automaticamente con las notas del equipo veterinario.",
+        "patient": "Paciente",
+        "serviceDate": "Fecha del servicio",
+        "lastUpdate": "Ultima actualizacion",
+        "reason": "Motivo de consulta",
+        "doctorNotes": "Notas del doctor",
+        "noNotes": "Aun no hay una actualizacion escrita por el equipo veterinario.",
+        "serviceStatus": "Estado del servicio",
+        "statusDescription": "El equipo puede actualizar esta informacion mientras el caso avanza.",
+        "serviceFinished": "Servicio finalizado",
+        "serviceCost": "Costo del servicio",
+        "printSummary": "Imprimir resumen"
+    },
+    "auth": {
+        "login": "Ingresar",
+        "email": "Correo electronico",
+        "password": "Contrasena",
+        "remember": "Mantener sesion activa",
+        "forgotPassword": "Recuperar acceso",
+        "demoCredentials": "Usar credenciales de demo",
+        "security": "Sesion protegida con encriptacion",
+        "validating": "Validando credenciales"
+    },
+    "common": {
+        "close": "Cerrar",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "confirm": "Confirmar",
+        "loading": "Cargando...",
+        "noData": "No hay datos",
+        "search": "Buscar",
+        "results": "resultados",
+        "page": "Pagina",
+        "of": "de",
+        "actions": "Acciones",
+        "activity": "Actividad",
+        "createdBy": "Creado por",
+        "updatedBy": "Editado por",
+        "deletedBy": "Eliminado por"
+    },
+    "units": {
+        "inBase": "en base"
+    }
+}

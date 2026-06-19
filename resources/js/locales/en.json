@@ -1,0 +1,150 @@
+{
+    "app": {
+        "name": "Green Col",
+        "tagline": "Veterinary"
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "appointments": "Appointments",
+        "pets": "Patients",
+        "veterinarians": "Clinical Team",
+        "services": "Services",
+        "inventory": "Inventory",
+        "settings": "Settings",
+        "profile": "Profile",
+        "logout": "Log out"
+    },
+    "dashboard": {
+        "title": "Overview",
+        "subtitle": "Operational summary, analytics and detailed editing in modal windows.",
+        "activeCases": "Active cases",
+        "activeCasesDesc": "Patients in follow-up or scheduled.",
+        "todayAgenda": "Today's agenda",
+        "todayAgendaDesc": "Appointments scheduled for today.",
+        "completed": "Completed",
+        "completedDesc": "Closed services ready to share.",
+        "revenue": "Revenue in progress",
+        "revenueDesc": "Accumulated value in active agenda.",
+        "capacity": "Configured capacity",
+        "upcoming": "Upcoming appointments",
+        "quickSummary": "Quick summary"
+    },
+    "appointments": {
+        "title": "Appointments",
+        "subtitle": "Scheduled, in progress, completed and cancelled",
+        "create": "New appointment",
+        "edit": "Edit appointment",
+        "new": "New appointment",
+        "registerService": "Register service",
+        "status": "Status",
+        "allStatuses": "All statuses",
+        "patient": "Patient",
+        "veterinarian": "Veterinarian",
+        "service": "Service",
+        "date": "Date",
+        "cost": "Cost",
+        "actions": "Actions",
+        "editBtn": "Edit",
+        "completeBtn": "Complete",
+        "searchPlaceholder": "Search by pet, owner, veterinarian or service",
+        "emptyMessage": "No appointments match that filter."
+    },
+    "pets": {
+        "title": "Patients",
+        "subtitle": "Pets and owners",
+        "create": "Create patient",
+        "newRecord": "New record",
+        "baseClinic": "Clinical database",
+        "registered": "Registered patients",
+        "owners": "Owners",
+        "directory": "Contact directory",
+        "searchPlaceholder": "Filter by pet, owner or veterinarian",
+        "emptyMessage": "No patients registered."
+    },
+    "veterinarians": {
+        "title": "Clinical Team",
+        "subtitle": "Veterinarians",
+        "create": "Create veterinarian",
+        "newProfessional": "New professional",
+        "activeTeam": "Active staff",
+        "available": "Team available for scheduling",
+        "searchPlaceholder": "Filter by name, specialty or email",
+        "emptyMessage": "No veterinarians registered."
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "Clinical catalog and pricing",
+        "create": "Create service",
+        "newService": "New service",
+        "addToCatalog": "Add to catalog",
+        "activeCatalog": "Active catalog",
+        "configured": "Configured services",
+        "searchPlaceholder": "Filter by name, type or description",
+        "emptyMessage": "No services configured."
+    },
+    "inventory": {
+        "title": "Inventory",
+        "subtitle": "Clinical supply management",
+        "addItem": "Add to inventory",
+        "newItem": "New item",
+        "active": "Active inventory",
+        "registered": "Registered items",
+        "searchPlaceholder": "Filter by name, category or supplier",
+        "emptyMessage": "No items in inventory."
+    },
+    "settings": {
+        "title": "Clinic Settings",
+        "clinicName": "Clinic name",
+        "logo": "Clinic logo",
+        "palette": "Color palette",
+        "paletteDesc": "Select a ready-made palette to automatically apply to login, navigation and buttons.",
+        "save": "Save Changes",
+        "saved": "Saved."
+    },
+    "tracking": {
+        "title": "Case Follow-up",
+        "description": "This link shows only the evolution of the current service and updates automatically with the veterinary team's notes.",
+        "patient": "Patient",
+        "serviceDate": "Service date",
+        "lastUpdate": "Last update",
+        "reason": "Reason for consultation",
+        "doctorNotes": "Doctor's notes",
+        "noNotes": "No update has been written by the veterinary team yet.",
+        "serviceStatus": "Service status",
+        "statusDescription": "The team can update this information as the case progresses.",
+        "serviceFinished": "Service completed",
+        "serviceCost": "Service cost",
+        "printSummary": "Print summary"
+    },
+    "auth": {
+        "login": "Log in",
+        "email": "Email address",
+        "password": "Password",
+        "remember": "Keep session active",
+        "forgotPassword": "Recover access",
+        "demoCredentials": "Use demo credentials",
+        "security": "Session protected with encryption",
+        "validating": "Validating credentials"
+    },
+    "common": {
+        "close": "Close",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "loading": "Loading...",
+        "noData": "No data",
+        "search": "Search",
+        "results": "results",
+        "page": "Page",
+        "of": "of",
+        "actions": "Actions",
+        "activity": "Activity",
+        "createdBy": "Created by",
+        "updatedBy": "Updated by",
+        "deletedBy": "Deleted by"
+    },
+    "units": {
+        "inBase": "in database"
+    }
+}
