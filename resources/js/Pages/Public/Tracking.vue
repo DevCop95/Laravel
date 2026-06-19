@@ -1,6 +1,6 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { Head, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
 import { useFormatting } from '@/composables/useFormatting';
 import { usePolling } from '@/composables/usePolling';
 
@@ -8,6 +8,9 @@ const props = defineProps({
     clinicName: String,
     tracking: Object,
 });
+
+const page = usePage();
+const token = computed(() => page.url.split('/seguimiento/')[1]?.split('/')[0] || '');
 
 const { formatDateLong, statusBadgeClass, formatCurrency } = useFormatting();
 
@@ -97,7 +100,7 @@ usePolling(refreshTracking, 15000);
                     <aside class="space-y-6">
                         <div class="rounded-[1.8rem] border border-[#dbe2d4] bg-white p-6">
                             <a
-                                :href="route('tracking.print', $page.params.token)"
+                                :href="route('tracking.print', token)"
                                 target="_blank"
                                 class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#24543f] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#1d4634] hover:shadow-[0_8px_20px_-6px_rgba(36,84,63,0.4)]"
                             >
