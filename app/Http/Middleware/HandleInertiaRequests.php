@@ -61,8 +61,13 @@ class HandleInertiaRequests extends Middleware
             ],
             'flash' => [
                 'status' => fn () => $request->session()->get('status'),
+                'error' => fn () => $request->session()->get('error'),
             ],
             'clinic' => $clinic,
+            'demo' => [
+                'enabled' => (bool) config('app.demo'),
+                'readonly' => (bool) config('app.demo_readonly'),
+            ],
         ];
     }
 }

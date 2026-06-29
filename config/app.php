@@ -123,4 +123,20 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Modo demostracion
+    |--------------------------------------------------------------------------
+    |
+    | "demo" activa el banner de entorno de demostracion en la interfaz.
+    | "demo_readonly" bloquea cualquier mutacion (crear, editar, eliminar)
+    | para poder exponer la demo de forma publica sin riesgo de que se
+    | alteren o borren los datos.
+    |
+    */
+
+    'demo' => env('APP_DEMO', false),
+
+    'demo_readonly' => env('APP_DEMO_READONLY', false),
+
 ];

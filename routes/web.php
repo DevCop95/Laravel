@@ -19,18 +19,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/seguimiento/{token}', [VeterinaryController::class, 'showTracking'])
-    ->name('tracking.show');
-Route::get('/seguimiento/{token}/data', [VeterinaryController::class, 'trackingData'])
-    ->name('tracking.data');
-Route::get('/seguimiento/{token}/imprimir', [VeterinaryController::class, 'printSummary'])
-    ->name('tracking.print');
+Route::middleware('throttle:public-tracking')->group(function () {
+    Route::get('/seguimiento/{token}', [VeterinaryController::class, 'showTracking'])
+        ->name('tracking.show');
+    Route::get('/seguimiento/{token}/data', [VeterinaryController::class, 'trackingData'])
+        ->name('tracking.data');
+    Route::get('/seguimiento/{token}/imprimir', [VeterinaryController::class, 'printSummary'])
+        ->name('tracking.print');
+});
 
 Route::get('/dashboard', [VeterinaryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'demo.readonly'])->group(function () {
     Route::get('/citas', [VeterinaryController::class, 'appointments'])
         ->name('appointments.index');
     Route::get('/pacientes', [VeterinaryController::class, 'pets'])
@@ -90,7 +92,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('inventory.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'demo.readonly'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -97,6 +97,8 @@ class VeterinaryController extends Controller
 
     public function petHistory(Pet $pet): Response
     {
+        $this->authorize('view', $pet);
+
         $pet->load(['owner', 'veterinarian', 'appointments.service', 'appointments.veterinarian'])
             ->loadCount('appointments');
 
@@ -186,21 +188,33 @@ class VeterinaryController extends Controller
             'Content-Disposition' => 'attachment; filename="citas_'.date('Y-m-d').'.csv"',
         ];
 
-        $callback = function () use ($appointments) {
+        // Neutraliza la inyeccion de formulas CSV: un valor que empiece por
+        // = + - @ (o tab/CR) se ejecutaria como formula en Excel/Sheets.
+        $csvSafe = static function ($value): string {
+            $value = (string) $value;
+
+            if ($value !== '' && in_array($value[0], ['=', '+', '-', '@', "\t", "\r"], true)) {
+                return "'".$value;
+            }
+
+            return $value;
+        };
+
+        $callback = function () use ($appointments, $csvSafe) {
             $file = fopen('php://output', 'w');
             fputcsv($file, ['Paciente', 'Especie', 'Responsable', 'Veterinario', 'Servicio', 'Fecha', 'Estado', 'Costo', 'Notas']);
 
             foreach ($appointments as $a) {
                 fputcsv($file, [
-                    $a->pet?->name,
-                    $a->pet?->species,
-                    $a->pet?->owner?->name,
-                    $a->veterinarian?->name,
-                    $a->service?->name,
+                    $csvSafe($a->pet?->name),
+                    $csvSafe($a->pet?->species),
+                    $csvSafe($a->pet?->owner?->name),
+                    $csvSafe($a->veterinarian?->name),
+                    $csvSafe($a->service?->name),
                     $a->appointment_date?->format('Y-m-d H:i'),
                     $this->appointmentService->statusLabel($a->status),
                     $a->service_price,
-                    $a->doctor_notes,
+                    $csvSafe($a->doctor_notes),
                 ]);
             }
 

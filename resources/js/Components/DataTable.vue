@@ -156,7 +156,7 @@ const formatCell = (row, column) => {
                                 :class="col.cellClass"
                             >
                                 <slot :name="'cell-' + col.key" :row="row" :value="resolveValue(row, col.key)">
-                                    <span :class="col.textClass ?? 'text-[var(--clinic-text)]'" v-html="formatCell(row, col)" />
+                                    <span :class="col.textClass ?? 'text-[var(--clinic-text)]'">{{ formatCell(row, col) }}</span>
                                 </slot>
                             </td>
                         </tr>
@@ -169,6 +169,7 @@ const formatCell = (row, column) => {
                                         </svg>
                                     </div>
                                     <p class="text-sm text-[var(--clinic-muted)]">{{ emptyMessage }}</p>
+                                    <slot name="empty-action" />
                                 </div>
                             </td>
                         </tr>
@@ -188,7 +189,7 @@ const formatCell = (row, column) => {
                     <div v-for="col in columns.filter(c => c.key !== 'actions')" :key="col.key" class="flex items-start justify-between gap-3">
                         <span class="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--clinic-muted)]">{{ col.label }}</span>
                         <slot :name="'cell-' + col.key" :row="row" :value="resolveValue(row, col.key)" class="text-right">
-                            <span :class="col.textClass ?? 'text-right text-sm font-medium text-[var(--clinic-text)]'" v-html="formatCell(row, col)" />
+                            <span :class="col.textClass ?? 'text-right text-sm font-medium text-[var(--clinic-text)]'">{{ formatCell(row, col) }}</span>
                         </slot>
                     </div>
                     <slot name="row-actions" :row="row" />
@@ -196,6 +197,9 @@ const formatCell = (row, column) => {
             </div>
             <div v-if="paginatedRows.length === 0" class="rounded-[1.6rem] border border-dashed border-[var(--clinic-border)] bg-[var(--clinic-panel-bg)] p-10 text-center">
                 <p class="text-sm text-[var(--clinic-muted)]">{{ emptyMessage }}</p>
+                <div class="mt-4 flex justify-center">
+                    <slot name="empty-action" />
+                </div>
             </div>
         </div>
 

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $pets = $this->seedPets($owners, $veterinarians);
         $services = $this->seedServices();
         $this->seedAppointments($pets, $services, $veterinarians);
+        $this->seedBulkAppointments($pets, $services, $veterinarians);
     }
 
     protected function seedClinic(): void
@@ -213,6 +214,68 @@ class DatabaseSeeder extends Seeder
                     'public_token' => Str::uuid()->toString(),
                     'doctor_notes' => $record['notes'] ?? null,
                     'service_finished_at' => $isCompleted ? $record['date']->copy()->addHour() : null,
+                ],
+            );
+        }
+    }
+
+    /**
+     * Genera un volumen de citas repartidas en los ultimos 60 dias y los
+     * proximos 30 para que el dashboard, los graficos de ingresos y la
+     * agenda se vean con datos realistas en la demo.
+     */
+    protected function seedBulkAppointments(array $pets, array $services, array $veterinarians): void
+    {
+        $petList = array_values($pets);
+        $serviceList = array_values($services);
+        $vetList = array_values($veterinarians);
+
+        $reasons = [
+            'Chequeo de rutina', 'Control de peso', 'Desparasitacion', 'Limpieza dental',
+            'Revision postoperatoria', 'Sintomas digestivos', 'Control de alergia',
+            'Aplicacion de refuerzo', 'Evaluacion cardiaca', 'Curacion de herida',
+        ];
+
+        $notes = [
+            'Paciente en buen estado general.', 'Se formula tratamiento y control en 15 dias.',
+            'Evolucion favorable, continuar manejo.', 'Se recomienda ajuste de dieta.',
+            'Signos vitales dentro de parametros normales.',
+        ];
+
+        for ($i = 0; $i < 45; $i++) {
+            $pet = $petList[array_rand($petList)];
+            $service = $serviceList[array_rand($serviceList)];
+            $veterinarian = $vetList[array_rand($vetList)];
+
+            // ~65% en el pasado (finalizadas), ~35% a futuro (programadas).
+            $isPast = mt_rand(1, 100) <= 65;
+            $date = $isPast
+                ? now()->subDays(mt_rand(1, 60))->setTime(mt_rand(8, 17), [0, 15, 30, 45][array_rand([0, 1, 2, 3])])
+                : now()->addDays(mt_rand(1, 30))->setTime(mt_rand(8, 17), [0, 15, 30, 45][array_rand([0, 1, 2, 3])]);
+
+            if ($isPast) {
+                // La mayoria finalizadas, alguna cancelada para variedad.
+                $status = mt_rand(1, 100) <= 85 ? 'completed' : 'cancelled';
+            } else {
+                $status = 'scheduled';
+            }
+
+            $isCompleted = $status === 'completed';
+
+            Appointment::updateOrCreate(
+                [
+                    'pet_id' => $pet->id,
+                    'appointment_date' => $date,
+                ],
+                [
+                    'veterinarian_id' => $veterinarian->id,
+                    'service_id' => $service->id,
+                    'service_price' => $service->price,
+                    'reason' => $reasons[array_rand($reasons)],
+                    'status' => $status,
+                    'public_token' => Str::uuid()->toString(),
+                    'doctor_notes' => $isCompleted ? $notes[array_rand($notes)] : null,
+                    'service_finished_at' => $isCompleted ? $date->copy()->addHour() : null,
                 ],
             );
         }

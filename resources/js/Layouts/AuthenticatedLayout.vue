@@ -15,6 +15,8 @@ const toast = useToast();
 
 const palette = computed(() => page.props.clinic.palette.colors);
 
+const demo = computed(() => page.props.demo ?? { enabled: false, readonly: false });
+
 const themeStyle = computed(() => ({
     '--clinic-shell-bg': palette.value.shell_bg,
     '--clinic-shell-surface': palette.value.shell_surface,
@@ -36,6 +38,14 @@ watch(
     { immediate: true },
 );
 
+watch(
+    () => page.props.flash?.error,
+    (msg) => {
+        if (msg) toast.error(msg);
+    },
+    { immediate: true },
+);
+
 router.on('finish', () => {
     const errors = Object.keys(page.props.errors || {});
     if (errors.length) {
@@ -47,6 +57,21 @@ router.on('finish', () => {
 <template>
     <div>
         <div :style="themeStyle" class="min-h-screen bg-[var(--clinic-shell-bg)] text-[var(--clinic-text)]">
+            <!-- Banner de modo demostracion -->
+            <div
+                v-if="demo.enabled"
+                class="flex items-center justify-center gap-2 bg-[var(--clinic-primary-dark)] px-4 py-1.5 text-center text-xs font-semibold uppercase tracking-[0.18em] text-[var(--clinic-highlight)]"
+            >
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" x2="12" y1="8" y2="12" />
+                    <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+                <span>Entorno de demostracion</span>
+                <span v-if="demo.readonly" class="rounded-full bg-[color-mix(in_srgb,var(--clinic-highlight)_22%,transparent)] px-2 py-0.5 normal-case tracking-normal">
+                    solo lectura
+                </span>
+            </div>
             <div class="absolute inset-x-0 top-0 -z-10 h-[24rem] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--clinic-primary)_10%,transparent)_0%,transparent_100%)]" />
             <nav class="sticky top-0 z-30 border-b border-[var(--clinic-border)] bg-[color-mix(in_srgb,var(--clinic-shell-surface)_90%,transparent)] backdrop-blur">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

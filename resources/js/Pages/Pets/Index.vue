@@ -169,6 +169,14 @@ const saveOwner = (ownerId) => {
                             empty-message="No hay pacientes registrados."
                             :per-page="8"
                         >
+                            <template #empty-action>
+                                <button type="button" class="inline-flex items-center gap-2 rounded-full bg-[var(--clinic-primary)] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--clinic-highlight)] transition-all duration-200 hover:bg-[var(--clinic-primary-dark)]" @click="openCreateModal">
+                                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" x2="12" y1="5" y2="19" /><line x1="5" x2="19" y1="12" y2="12" />
+                                    </svg>
+                                    Crear primer paciente
+                                </button>
+                            </template>
                             <template #cell-name="{ row }">
                                 <div class="flex items-center gap-3">
                                     <img v-if="row.photo_path" :src="'/storage/' + row.photo_path" class="h-10 w-10 rounded-xl object-cover" />
